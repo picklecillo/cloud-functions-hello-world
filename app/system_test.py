@@ -3,6 +3,7 @@ import uuid
 
 import requests
 
+import main
 
 def test_no_args():
     GCLOUD_TOKEN = os.getenv('GCLOUD_TOKEN')
@@ -14,7 +15,7 @@ def test_no_args():
         '{}/hello_world'.format(BASE_URL),
         headers={'Authorization': f'Bearer {GCLOUD_TOKEN}'},
     )
-    assert res.text == 'Hello World!'
+    assert res.text == 'Hello World! {}'.format(main.SECRET_STRING)
 
 
 def test_args():
@@ -29,4 +30,4 @@ def test_args():
       headers={'Authorization': f'Bearer {GCLOUD_TOKEN}'},
       json={'name': name}
     )
-    assert res.text == 'Hello {}!'.format(name)
+    assert res.text == 'Hello {}! {}'.format(name, main.SECRET_STRING)

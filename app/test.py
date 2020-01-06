@@ -9,7 +9,7 @@ def test_print_name():
     req = Mock(get_json=Mock(return_value=data), args=data)
 
     # Call tested function
-    assert main.hello_world(req) == 'Hello {}!'.format(name)
+    assert main.hello_world(req) == 'Hello {}! {}'.format(name, main.SECRET_STRING)
 
 
 def test_print_hello_world():
@@ -17,4 +17,4 @@ def test_print_hello_world():
     req = Mock(get_json=Mock(return_value=data), args=data)
 
     # Call tested function
-    assert main.hello_world(req) == 'Hello World!'
+    assert main.hello_world(req) == 'Hello World! {}'.format(main.SECRET_STRING)

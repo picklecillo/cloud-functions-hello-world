@@ -11,7 +11,7 @@ case $1 in
     ;;
 
   deploy)
-    gcloud functions deploy hello_world --runtime python37 --trigger-http --source app/
+    gcloud functions deploy hello_world --env-vars-file app/.env.yaml --runtime python37 --trigger-http --source app/
     ;;
 
   destroy)
