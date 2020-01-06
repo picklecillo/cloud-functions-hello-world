@@ -51,6 +51,9 @@ source env_vars
 
 ```sh
 ./scripts.sh deploy
+# > ./scripts.sh deploy
+# Allow unauthenticated invocations of new function [hello_world]?
+# (y/N)?  N
 ./scripts.sh system_tests
 ./scripts.sh destroy
 ```
