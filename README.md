@@ -17,6 +17,7 @@ export GCP_PROJECT_ID=
 export BASE_URL=https://$GCF_REGION-$GCP_PROJECT_ID.cloudfunctions.net/
 export GCLOUD_TOKEN=$(gcloud auth print-identity-token)
 export GOOGLE_APPLICATION_CREDENTIALS=google_credentials.json
+export JIRA_API_URL=
 ```
 
 ### `.env.yaml`
@@ -32,21 +33,27 @@ source env_vars
 
 ## Tests
 
-### Local tests
+**TESTS REQUIRE SECRETS**
 
-**REQUIRES SECRETS**
+### Local tests
 
 ```sh
 ./scripts.sh tests
 ```
 
-### System tests
+### Integration Tests
 
 ```sh
 ./scripts.sh deploy
 ./scripts.sh system_tests
 ./scripts.sh destroy
 ```
+
+### API Tests
+```sh
+./scripts.sh test_api
+```
+
 
 ## Secrets
 

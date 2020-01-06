@@ -6,6 +6,10 @@ case $1 in
     pytest app/test.py -v
     ;;
 
+  api_tests)
+    pytest app/test_api.py -v
+    ;;
+
   system_tests)
     pytest app/system_test.py -v
     ;;

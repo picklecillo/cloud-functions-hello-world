@@ -18,3 +18,4 @@ def test_print_hello_world():
 
     # Call tested function
     assert main.hello_world(req) == 'Hello World! {}'.format(main.SECRET_STRING)
+

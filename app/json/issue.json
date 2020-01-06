@@ -1,0 +1,47 @@
+{
+  "changelog": {
+    "histories": [
+      {
+        "author": {
+          "key": "jack-the-ripper",
+          "name": "jack-the-ripper"
+        },
+        "id": "2672676",
+        "items": [
+          {
+            "field": "status",
+            "fieldtype": "jira",
+            "from": "10512",
+            "fromString": "Parking Lot",
+            "to": "11326",
+            "toString": "Ready for Development"
+          }
+        ]
+      },
+      {
+        "author": {
+          "key": "jack-the-ripper",
+          "name": "jack-the-ripper"
+        },
+        "id": "2672676",
+        "items": [
+          {
+            "field": "status",
+            "fieldtype": "jira",
+            "from": "11219",
+            "fromString": "In Dev",
+            "to": "10001",
+            "toString": "Accepted"
+          }
+        ]
+      }
+    ]
+  },
+  "fields": {
+    "status": {
+      "id": "10001"
+    }
+  },
+  "id": "1",
+  "key": "VALID-ISSUE "
+}
