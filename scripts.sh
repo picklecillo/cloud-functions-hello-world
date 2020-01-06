@@ -2,6 +2,13 @@
 
 case $1 in
 
+  init_workspace)
+    mkvirtualenv soxaas
+    workon soxaas
+    pip install -r app/dev_requirements.txt
+    pip install -r app/requirements.txt
+  ;;
+
   tests)
     pytest app/test.py -v
     ;;
