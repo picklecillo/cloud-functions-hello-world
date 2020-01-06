@@ -9,16 +9,25 @@ case $1 in
     pip install -r app/requirements.txt
   ;;
 
+  install_package)
+    cd app/
+    pip install .
+  ;;
+
   tests)
-    pytest app/test.py -v
+    pytest app/tests/test.py -v
     ;;
 
   api_tests)
-    pytest app/test_api.py -v
+    pytest app/tests/test_api.py -v
     ;;
 
   system_tests)
-    pytest app/system_test.py -v
+    pytest app/tests/system_test.py -v
+    ;;
+
+  all_tests)
+    pytest app/tests/ -v
     ;;
 
   deploy)

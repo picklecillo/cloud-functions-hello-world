@@ -3,7 +3,7 @@ import uuid
 
 import requests
 
-import main
+import app.main as main
 
 def test_no_args():
     GCLOUD_TOKEN = os.getenv('GCLOUD_TOKEN')

@@ -1,6 +1,6 @@
 from unittest.mock import Mock
 
-import main
+from app import main
 
 
 def test_print_name():
@@ -8,7 +8,6 @@ def test_print_name():
     data = {'name': name}
     req = Mock(get_json=Mock(return_value=data), args=data)
 
-    # Call tested function
     assert main.hello_world(req) == 'Hello {}! {}'.format(name, main.SECRET_STRING)
 
 
@@ -16,6 +15,5 @@ def test_print_hello_world():
     data = {}
     req = Mock(get_json=Mock(return_value=data), args=data)
 
-    # Call tested function
     assert main.hello_world(req) == 'Hello World! {}'.format(main.SECRET_STRING)
 
