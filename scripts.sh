@@ -1,15 +1,9 @@
-#!/bin/sh
+#!/bin/bash
 
 case $1 in
 
   init_workspace)
-    mkvirtualenv soxaas
-    workon soxaas
-    pip install -r app/dev_requirements.txt
-    pip install -r app/requirements.txt
-  ;;
-
-  install_package)
+    pip install -r app/app/dev_requirements.txt
     cd app/
     pip install .
   ;;
@@ -31,7 +25,7 @@ case $1 in
     ;;
 
   deploy)
-    gcloud functions deploy hello_world --env-vars-file app/.env.yaml --runtime python37 --trigger-http --source app/
+    gcloud functions deploy hello_world --env-vars-file app/.env.yaml --runtime python37 --trigger-http --source app/app/
     ;;
 
   destroy)

@@ -4,11 +4,10 @@
 
 ```sh
 mkvirtualenv soxaas
-workon soxaas
-pip install -r dev_requirements.txt
+./scripts.sh init_workspace
 ```
 
-## Env vars
+## `env_vars`
 
 ```bash
 # env_vars file
@@ -17,10 +16,17 @@ export GCP_PROJECT_ID=
 export BASE_URL=https://$GCF_REGION-$GCP_PROJECT_ID.cloudfunctions.net/
 export GCLOUD_TOKEN=$(gcloud auth print-identity-token)
 export GOOGLE_APPLICATION_CREDENTIALS=google_credentials.json
+
+export KMS_KEYRING=
+export KMS_KEY=
+
+export SECRET_RESOURCE_NAME=projects/$GCP_PROJECT_ID/locations/global/keyRings/$KMS_KEYRING/cryptoKeys/$KMS_KEY
+export SECRET_API_TOKEN=
+
 export JIRA_API_URL=
 ```
 
-### `.env.yaml`
+### `app/.env.yaml`
 ```yaml
 SECRET_RESOURCE_NAME: projects/<project-id>/locations/global/keyRings/<keyring>/cryptoKeys/<key>
 SECRET_API_TOKEN: <encrypted api token>
@@ -51,9 +57,13 @@ source env_vars
 
 ### API Tests
 ```sh
-./scripts.sh test_api
+./scripts.sh api_tests
 ```
 
+### All tests
+```sh
+./scripts.sh all_tests
+```
 
 ## Secrets
 
