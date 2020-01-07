@@ -1,0 +1,13 @@
+from flask import Flask
+from flask import request
+
+from app.main import hello_world
+
+app = Flask(__name__)
+
+@app.route('/hello_world')
+def hello():
+    return hello_world(request)
+
+if __name__ == "__main__":
+    app.run('127.0.0.1', 8000, debug=True)
