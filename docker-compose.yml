@@ -1,0 +1,17 @@
+version: '3.7'
+
+services:
+  soxaas:
+    build:
+      context: app
+      dockerfile: Dockerfile
+    ports:
+      - 8000:8000
+    volumes:
+      - type: bind
+        source: $PWD/google_credentials.json
+        target: /google_credentials.json
+    environment:
+      - GOOGLE_APPLICATION_CREDENTIALS=/google_credentials.json
+      - GCS_BUCKET_NAME=$GCS_BUCKET_NAME
+      - GCP_KMS_KEY_ID=projects/$GCS_PROJECT_ID/locations/global/keyRings/$GCP_KMS_KEYRING/cryptoKeys/$GCP_KMS_KEYNAME

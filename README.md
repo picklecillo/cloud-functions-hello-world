@@ -13,23 +13,31 @@ mkvirtualenv soxaas
 # env_vars file
 export GCF_REGION=
 export GCP_PROJECT_ID=
+export GOOGLE_CLOUD_PROJECT=$GCP_PROJECT_ID
+export GCP_LOCATION=global
+
+export GCP_KMS_KEYRING=
+export GCP_KMS_KEYNAME=
+export GCP_KMS_ROLE=roles/cloudkms.cryptoKeyDecrypter
+export GCP_KMS_KEY_ID=projects/$GCP_PROJECT_ID/locations/$GCP_LOCATION/keyRings/$GCP_KMS_KEYRING/cryptoKeys/$GCP_KMS_KEYNAME
+
+export GCP_SA_NAME=
+export GCP_SA=$GCP_SA_NAME@$GCP_PROJECT_ID.iam.gserviceaccount.com
+
+export GCS_BUCKET_NAME=
+export GCS_BUCKET_ROLE=legacyBucketReader
+export GCS_OBJECT_ROLE=legacyObjectReader
+
 export BASE_URL=https://$GCF_REGION-$GCP_PROJECT_ID.cloudfunctions.net/
-export GCLOUD_TOKEN=$(gcloud auth print-identity-token)
-export GOOGLE_APPLICATION_CREDENTIALS=google_credentials.json
 
-export KMS_KEYRING=
-export KMS_KEY=
-
-export SECRET_RESOURCE_NAME=projects/$GCP_PROJECT_ID/locations/global/keyRings/$KMS_KEYRING/cryptoKeys/$KMS_KEY
-export SECRET_API_TOKEN=
-
-export JIRA_API_URL=
+export GOOGLE_APPLICATION_CREDENTIALS=
 ```
 
 ### `app/.env.yaml`
 ```yaml
-SECRET_RESOURCE_NAME: projects/<project-id>/locations/global/keyRings/<keyring>/cryptoKeys/<key>
-SECRET_API_TOKEN: <encrypted api token>
+GCS_BUCKET_NAME:
+GCP_KMS_KEY_ID:
+
 ```
 
 
