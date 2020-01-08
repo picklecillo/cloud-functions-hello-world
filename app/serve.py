@@ -1,7 +1,7 @@
 from flask import Flask
 from flask import request
 
-from app.main import hello_world
+from function.main import hello_world
 
 app = Flask(__name__)
 

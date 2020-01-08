@@ -3,8 +3,12 @@ import base64
 
 from google.cloud import kms
 
-import api
-import kms
+try:
+    import function.common.api as api
+    import function.common.kms as kms
+except ImportError:
+    import common.api as api
+    import common.kms as kms
 
 def hello_world(request):
     """Responds to any HTTP request.

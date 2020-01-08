@@ -5,7 +5,7 @@ import base64
 from google.cloud import storage
 from googleapiclient import discovery
 
-from settings import CONFIG_PATH
+from .settings import CONFIG_PATH
 
 enable_logging = True
 

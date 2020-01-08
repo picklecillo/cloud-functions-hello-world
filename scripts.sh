@@ -31,7 +31,7 @@ case $1 in
      --env-vars-file app/.env.yaml \
      --runtime python37 \
      --trigger-http \
-     --source app/app/ \
+     --source app/function/ \
      --service-account $GCP_SA
     ;;
 
