@@ -1,8 +1,9 @@
 import requests
 import os
 
+from kms import get_config
 
-BASE_URL = os.environ["JIRA_API_URL"]
+BASE_URL = get_config()['jira_api_url']
 
 
 def get_issues():
