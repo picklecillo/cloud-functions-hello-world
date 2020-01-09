@@ -23,7 +23,12 @@ case $1 in
     ;;
 
   all_tests)
-    pytest app/tests/ -vs
+    pytest --cov=function --cov-report=html --cov-report term app/tests/ -vs
+    ;;
+
+  serve_coverage)
+    cd htmlcov
+    python -m http.server 8001
     ;;
 
   # Deploy
