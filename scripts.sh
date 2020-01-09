@@ -9,8 +9,8 @@ case $1 in
   ;;
 
   # Tests
-  tests)
-    pytest app/tests/test.py -v
+  function_tests)
+    pytest app/tests/test_function.py -v
     ;;
 
   api_tests)
@@ -26,6 +26,11 @@ case $1 in
     ;;
 
   # Deploy
+  gcp_login)
+    gcloud auth activate-service-account $GCP_SA --key-file=google_credentials.json
+    ;;
+
+
   deploy)
     gcloud functions deploy hello_world \
      --env-vars-file app/.env.yaml \
@@ -76,12 +81,13 @@ case $1 in
   gcs_copy_config)
     gsutil -h "Content-Type: application/octet-stream" cp config.enc gs://$GCS_BUCKET_NAME/config.enc
 
+    gsutil iam ch serviceAccount:$GCP_SA:$GCS_BUCKET_ROLE gs://$GCS_BUCKET_NAME/
+    gsutil iam ch serviceAccount:$GCP_SA:$GCS_OBJECT_ROLE gs://$GCS_BUCKET_NAME/config.enc
+
     # this command will return an error on an empty bucket
     gsutil acl set private gs://$GCS_BUCKET_NAME/config.enc
     gsutil acl set private gs://$GCS_BUCKET_NAME/config.enc
 
-    gsutil iam ch serviceAccount:$GCP_SA:$GCS_BUCKET_ROLE gs://$GCS_BUCKET_NAME/
-    gsutil iam ch serviceAccount:$GCP_SA:$GCS_OBJECT_ROLE gs://$GCS_BUCKET_NAME/config.enc
     ;;
 
   *)

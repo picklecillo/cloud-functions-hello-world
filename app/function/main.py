@@ -1,8 +1,6 @@
 import os
 import base64
 
-from google.cloud import kms
-
 try:
     import function.common.api as api
     import function.common.kms as kms

@@ -1,4 +1,4 @@
-# README
+ # README
 
 ## Local development
 
@@ -24,7 +24,8 @@ export GCP_KMS_KEY_ID=projects/$GCP_PROJECT_ID/locations/$GCP_LOCATION/keyRings/
 export GCP_SA_NAME=
 export GCP_SA=$GCP_SA_NAME@$GCP_PROJECT_ID.iam.gserviceaccount.com
 
-export GCS_BUCKET_NAME=
+export GCS_BUCKET_PREFIX=
+export GCS_BUCKET_NAME=$GCP_PROJECT_ID-$GCS_BUCKET_PREFIX
 export GCS_BUCKET_ROLE=legacyBucketReader
 export GCS_OBJECT_ROLE=legacyObjectReader
 
@@ -134,3 +135,20 @@ def get_secret():
         base64.b64decode(os.environ["SECRET_API_TOKEN"]),
     ).plaintext
 ```
+
+## Scripts
+
+Required apis:
+* `cloudkms.googleapis.com`
+* `cloudfunctions.googleapis.com`
+* `cloudresourcemanager.googleapis.com/`
+
+Required Roles:
+* `Cloud Functions Developer`
+* `Service Account User`
+
+Required permissions for service account:
+* `cloudkms.keyRings.create`
+* `cloudkms.cryptoKeys.create`
+* `cloudkms.cryptoKeyVersions.useToEncrypt`
+* `cloudkms.cryptoKeys.getIamPolicy`

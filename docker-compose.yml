@@ -14,4 +14,4 @@ services:
     environment:
       - GOOGLE_APPLICATION_CREDENTIALS=/google_credentials.json
       - GCS_BUCKET_NAME=$GCS_BUCKET_NAME
-      - GCP_KMS_KEY_ID=projects/$GCS_PROJECT_ID/locations/global/keyRings/$GCP_KMS_KEYRING/cryptoKeys/$GCP_KMS_KEYNAME
+      - GCP_KMS_KEY_ID=projects/$GCP_PROJECT_ID/locations/global/keyRings/$GCP_KMS_KEYRING/cryptoKeys/$GCP_KMS_KEYNAME
