@@ -6,28 +6,31 @@ case $1 in
   init_workspace)
     pip install -r app/app/requirements.txt
     pip install -r app/app/dev_requirements.txt
+    pip install -e app/
   ;;
 
   # Tests
   function_tests)
-    pytest app/tests/test_function.py -v
+    pytest app/tests/test_function.py -vs
     ;;
 
   api_tests)
-    pytest app/tests/test_api.py -v
+    pytest app/tests/test_api.py -vs
     ;;
 
   system_tests)
-    pytest app/tests/system_test.py -v
+    pytest app/tests/system_test.py -vs
     ;;
 
   all_tests)
-    pytest app/tests/ -v
+    pytest app/tests/ -vs
     ;;
 
   # Deploy
   gcp_login)
-    gcloud auth activate-service-account $GCP_SA --key-file=google_credentials.json
+    gcloud auth activate-service-account $GCP_SA \
+      --key-file=google_credentials.json \
+      --project=$GCP_PROJECT_ID
     ;;
 
 

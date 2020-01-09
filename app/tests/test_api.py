@@ -1,6 +1,6 @@
 import pytest
 
-from app.api import get_issues, get_single_issue, set_issue, delete_issue
+from function.common.api import get_issues, get_single_issue, set_issue, delete_issue
 
 
 def test_get_issues(results_from_json):

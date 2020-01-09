@@ -152,3 +152,4 @@ Required permissions for service account:
 * `cloudkms.cryptoKeys.create`
 * `cloudkms.cryptoKeyVersions.useToEncrypt`
 * `cloudkms.cryptoKeys.getIamPolicy`
+* `storage.objects.get`

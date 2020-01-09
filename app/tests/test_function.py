@@ -1,19 +1,11 @@
 from unittest.mock import Mock
 
-from app import main
+from function import main
 
 
-def test_print_name():
+def test_get_config():
     name = 'test'
-    data = {'name': name}
+    data = {'jira_api_url': 'https://5e136df66e229f00146795e2.mockapi.io/rest/api/2/'}
     req = Mock(get_json=Mock(return_value=data), args=data)
 
-    assert main.hello_world(req) == 'Hello {}! {}'.format(name, main.SECRET_STRING)
-
-
-def test_print_hello_world():
-    data = {}
-    req = Mock(get_json=Mock(return_value=data), args=data)
-
-    assert main.hello_world(req) == 'Hello World! {}'.format(main.SECRET_STRING)
-
+    assert main.hello_world(req) == str({'jira_api_url': 'https://5e136df66e229f00146795e2.mockapi.io/rest/api/2/'})
