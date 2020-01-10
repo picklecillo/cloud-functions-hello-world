@@ -9,5 +9,8 @@ app = Flask(__name__)
 def hello():
     return hello_world(request)
 
+@app.route
+    hello_world2()
+
 if __name__ == "__main__":
     app.run('0.0.0.0', 8000, debug=True)
