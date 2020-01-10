@@ -20,18 +20,3 @@ def test_no_args():
         headers={'Authorization': f'Bearer {GCLOUD_TOKEN}'},
     )
     assert res.content.decode() == str(config)
-
-
-def test_args():
-    GCLOUD_TOKEN = os.getenv('GCLOUD_TOKEN')
-    assert GCLOUD_TOKEN is not None
-    BASE_URL = os.getenv('BASE_URL')
-    assert BASE_URL is not None
-
-    name = str(uuid.uuid4())
-    res = requests.post(
-      '{}/hello_world'.format(BASE_URL),
-      headers={'Authorization': f'Bearer {GCLOUD_TOKEN}'},
-      json={'name': name}
-    )
-    assert res.text == 'Hello {}! {}'.format(name, config['jira_api_url'])
