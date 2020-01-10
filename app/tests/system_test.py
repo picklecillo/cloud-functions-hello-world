@@ -3,10 +3,11 @@ import uuid
 
 import requests
 
-from function.common import kms
 
+config = {
+    'jira_api_url': 'https://5e136df66e229f00146795e2.mockapi.io/rest/api/2/',
+}
 
-config = {'jira_api_url': 'https://5e136df66e229f00146795e2.mockapi.io/rest/api/2/'}
 
 def test_no_args():
     GCLOUD_TOKEN = os.getenv('GCLOUD_TOKEN')
@@ -33,5 +34,4 @@ def test_args():
       headers={'Authorization': f'Bearer {GCLOUD_TOKEN}'},
       json={'name': name}
     )
-    # assert res.text == 'Hello {}! {}'.format(name, main.SECRET_STRING)
-    assert True
+    assert res.text == 'Hello {}! {}'.format(name, config['jira_api_url'])

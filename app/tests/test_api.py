@@ -1,6 +1,7 @@
-import pytest
-
-from function.common.api import get_issues, get_single_issue, set_issue, delete_issue
+from function.common.api import get_issues
+from function.common.api import get_single_issue
+from function.common.api import set_issue
+from function.common.api import delete_issue
 
 
 def test_get_issues(results_from_json):
@@ -16,6 +17,7 @@ def test_get_single_issue(results_from_json):
     expected_results = results_from_json('app/json/issue.json')
 
     assert issue == expected_results
+
 
 def test_set_issue(results_from_json):
     issue = set_issue({
@@ -69,6 +71,6 @@ def test_set_issue(results_from_json):
     expected_results.pop('id')
     new_id = issue.pop('id')
 
-    delete_results = delete_issue(new_id)
+    delete_issue(new_id)
 
     assert issue == expected_results

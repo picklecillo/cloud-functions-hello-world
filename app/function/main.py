@@ -1,12 +1,10 @@
-import os
-import base64
-
 try:
     import function.common.api as api
     import function.common.kms as kms
 except ImportError:
     import common.api as api
     import common.kms as kms
+
 
 def hello_world(request):
     """Responds to any HTTP request.
@@ -15,7 +13,7 @@ def hello_world(request):
     Returns:
         The response text or any set of values that can be turned into a
         Response object using
-        `make_response <http://flask.pocoo.org/docs/1.0/api/#flask.Flask.make_response>`.
+        `make_response <http://flask.pocoo.org/docs/1.0/api/#flask.Flask.make_response>`.  # noqa: E501
     """
     config = kms.get_config()
 

@@ -1,1 +1,1 @@
-CONFIG_PATH='config.enc'
+CONFIG_PATH = 'config.enc'
